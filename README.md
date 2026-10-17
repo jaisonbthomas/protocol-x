@@ -6,11 +6,6 @@
 </p>
 
 <p align="center">
-  <a href="./LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue" alt="Apache 2.0 License"></a>
-  <a href="https://github.com/jaisonbthomas/protocol-x"><img src="https://img.shields.io/badge/GitHub-Protocol%20X-181717?logo=github&logoColor=white" alt="GitHub"></a>
-</p>
-
-<p align="center">
   <img src="screenshot.png" alt="Protocol X Screenshot" width="800">
 </p>
 
