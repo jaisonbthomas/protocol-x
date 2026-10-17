@@ -1,0 +1,21 @@
+{
+  "batchNumber": 1,
+  "benchmarks": [
+    {
+      "name": "PROTOCOL-X-003-25",
+      "status": "success",
+      "vulnType": "Auth/Session",
+      "accuracy": 100,
+      "precision": 9,
+      "recall": 100,
+      "expectedVulns": 1,
+      "detectedVulns": 1,
+      "sessionPath": "<redacted-sessions>/protocol-x-protocol-x-003-25-PROTOCOL-X-003-25ses_3cb82e0b5ffeMk9tfftoUc6lwI"
+    }
+  ],
+  "completed": 1,
+  "failed": 0,
+  "startTime": "2026-02-06T19:45:14.278Z",
+  "endTime": "2026-02-06T20:03:58.967Z",
+  "durationMinutes": 18.7
+}

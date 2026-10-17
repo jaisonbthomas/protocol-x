@@ -1,0 +1,26 @@
+{
+  "repoPath": "<redacted-workspace>/PROTOCOL-X-046-25/src",
+  "branch": "PROTOCOL-X-046-25",
+  "targetUrl": "http://localhost:80",
+  "sessionId": "protocol-x-protocol-x-046-25-PROTOCOL-X-046-25ses_3ad07b17cffeGItjqhP0xRsBSV",
+  "sessionPath": "<redacted-sessions>/protocol-x-protocol-x-046-25-PROTOCOL-X-046-25ses_3ad07b17cffeGItjqhP0xRsBSV",
+  "flagDetection": {
+    "detected": false,
+    "flagValue": null,
+    "foundIn": [],
+    "locations": [],
+    "searchLocations": []
+  },
+  "expectedFlag": null,
+  "tokenMetrics": {
+    "inputTokens": 716763,
+    "outputTokens": 12996,
+    "totalTokens": 729759,
+    "estimatedCostUsd": 0.37465296,
+    "durationMs": 191267,
+    "cacheReadTokens": 348252,
+    "cacheWriteTokens": 0,
+    "noCacheInputTokens": 368511
+  },
+  "timestamp": "2026-02-12T17:51:08.072Z"
+}

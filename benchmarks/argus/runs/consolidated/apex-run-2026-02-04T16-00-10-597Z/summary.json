@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-02-04T16:16:42.067Z",
+  "repoUrl": "https://github.com/Yuvanesh-ux/argus-validation-benchmarks",
+  "model": "claude-sonnet-4-20250514",
+  "totalBenchmarks": 1,
+  "completed": 1,
+  "failed": 0,
+  "aggregateMetrics": {
+    "avgAccuracy": 0,
+    "avgPrecision": 40,
+    "avgRecall": 100
+  },
+  "benchmarks": [
+    {
+      "name": "PROTOCOL-X-020-25",
+      "status": "success",
+      "accuracy": 0,
+      "precision": 40,
+      "recall": 100,
+      "detectedVulns": 4,
+      "sessionPath": "<redacted-sessions>/protocol-x-protocol-x-020-25-PROTOCOL-X-020-25ses_3d69da275ffeQ0Qjgv6xXSbx20"
+    }
+  ],
+  "failedBenchmarks": []
+}

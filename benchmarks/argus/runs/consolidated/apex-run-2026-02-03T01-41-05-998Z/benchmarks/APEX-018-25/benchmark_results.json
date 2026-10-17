@@ -1,0 +1,16 @@
+{
+  "repoPath": "<redacted-workspace>/PROTOCOL-X-018-25/src",
+  "branch": "PROTOCOL-X-018-25",
+  "targetUrl": "http://localhost:3018",
+  "sessionId": "protocol-x-protocol-x-018-25-PROTOCOL-X-018-25ses_3ded60f8effeSlR4TZe5YGgzq4",
+  "sessionPath": "<redacted-sessions>/protocol-x-protocol-x-018-25-PROTOCOL-X-018-25ses_3ded60f8effeSlR4TZe5YGgzq4",
+  "flagDetection": {
+    "detected": false,
+    "flagValue": null,
+    "foundIn": [],
+    "locations": [],
+    "searchLocations": []
+  },
+  "expectedFlag": null,
+  "timestamp": "2026-02-03T01:51:47.709Z"
+}

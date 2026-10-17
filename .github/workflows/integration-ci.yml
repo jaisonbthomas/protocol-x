@@ -1,0 +1,71 @@
+# Integration CI – Console Typecheck
+# ==================================
+# Clones jaisonbthomas/console (which submodules protocol-x), updates the protocol-x
+# submodule to the current PR / push branch, then runs the console
+# typecheck to ensure protocol-x changes don't break downstream consumers.
+
+name: Integration CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, canary]
+
+jobs:
+  console-typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout protocol-x (this repo)
+        uses: actions/checkout@v4
+        with:
+          path: protocol-x
+
+      - name: Checkout jaisonbthomas/console
+        uses: actions/checkout@v4
+        with:
+          repository: jaisonbthomas/console
+          token: ${{ secrets.CONSOLE_REPO_TOKEN }}
+          submodules: recursive
+          path: console
+
+      - name: Update protocol-x submodule to current ref
+        working-directory: console
+        run: |
+          # Find the protocol-x submodule path inside console
+          SUBMODULE_PATH=$(git config --file .gitmodules --get-regexp 'submodule\..*\.url' \
+            | grep 'protocol-x' | head -n1 \
+            | sed 's/submodule\.\(.*\)\.url.*/\1/')
+
+          if [ -z "$SUBMODULE_PATH" ]; then
+            echo "::error::Could not find an protocol-x submodule in console/.gitmodules"
+            exit 1
+          fi
+
+          echo "Found protocol-x submodule at: $SUBMODULE_PATH"
+
+          # Point the submodule at the local protocol-x checkout and update
+          cd "$SUBMODULE_PATH"
+          git fetch "$GITHUB_WORKSPACE/protocol-x" "$GITHUB_SHA"
+          git checkout "$GITHUB_SHA"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install console dependencies
+        working-directory: console
+        run: npm install
+
+      - name: Install SST providers
+        working-directory: console
+        run: |
+          npx sst version
+          npx sst install
+
+      - name: Typecheck console
+        working-directory: console
+        run: npm run tsc

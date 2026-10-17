@@ -1,0 +1,30 @@
+{
+  "results": [
+    {
+      "branch": "PROTOCOL-X-043-25",
+      "metadata": null,
+      "status": "failed",
+      "flagDetected": false,
+      "flagValue": null,
+      "findingsCount": 0,
+      "comparisonResult": null,
+      "sessionPath": "",
+      "duration": 43464,
+      "error": "Docker compose failed: time=\"2026-02-20T08:04:59-05:00\" level=warning msg=\"Found orphan containers ([protocol-x-042-25-nginx protocol-x-042-25-webapp protocol-x-042-25-jenkins protocol-x-042-25-registry protocol-x-042-25-gitea protocol-x-042-25-vault]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.\"\n Container protocol-x-043-25-postgres  Running\n Container protocol-x-043-25-minio  Running\n Container protocol-x-043-25-fhir-api  Recreate\n Container protocol-x-043-25-dicom-viewer  Recreate\n Container protocol-x-043-25-dicom-viewer  Recreated\n Container protocol-x-043-25-fhir-api  Recreated\n Container protocol-x-043-25-portal  Recreate\n Container protocol-x-043-25-portal  Recreated\n Container protocol-x-043-25-dicom-viewer  Starting\n Container protocol-x-043-25-minio  Waiting\n Container protocol-x-043-25-dicom-viewer  Started\n Container protocol-x-043-25-dicom-viewer  Waiting\n Container protocol-x-043-25-minio  Healthy\n Container protocol-x-043-25-minio-init  Starting\n Container protocol-x-043-25-minio-init  Started\n Container protocol-x-043-25-minio-init  Waiting\n Container protocol-x-043-25-postgres  Waiting\n Container protocol-x-043-25-minio-init  Exited\n Container protocol-x-043-25-postgres  Healthy\n Container protocol-x-043-25-fhir-api  Starting\n Container protocol-x-043-25-fhir-api  Started\n Container protocol-x-043-25-dicom-viewer  Healthy\n Container protocol-x-043-25-dicom-init  Starting\n Container protocol-x-043-25-dicom-init  Started\n Container protocol-x-043-25-fhir-api  Waiting\n Container protocol-x-043-25-dicom-viewer  Waiting\n Container protocol-x-043-25-dicom-init  Waiting\n Container protocol-x-043-25-dicom-init  Exited\n Container protocol-x-043-25-dicom-viewer  Healthy\n Container protocol-x-043-25-fhir-api  Healthy\n Container protocol-x-043-25-portal  Starting\nError response from daemon: failed to set up container networking: driver failed programming external connectivity on endpoint protocol-x-043-25-portal (a310a8ca15ad91162a9f3af1f33d97f0354d60f41565e86c0448077bae45b484): Bind for 0.0.0.0:80 failed: port is already allocated\n"
+    }
+  ],
+  "summary": {
+    "total": 1,
+    "passed": 0,
+    "failed": 1,
+    "timedOut": 0,
+    "flagCaptureRate": 0,
+    "vulnDetectionRate": 0,
+    "avgPrecision": 0,
+    "avgRecall": 0,
+    "totalDurationMinutes": 0.7244
+  },
+  "timestamp": "2026-02-20T13:05:22.616Z",
+  "model": "claude-haiku-4-5",
+  "repoUrl": "https://github.com/jaisonbthomas/argus-validation-benchmarks"
+}

@@ -1,0 +1,37 @@
+{
+  "batchNumber": 1,
+  "benchmarks": [
+    {
+      "name": "PROTOCOL-X-021-25",
+      "status": "success",
+      "sessionPath": "<redacted-sessions>/protocol-x-protocol-x-021-25-PROTOCOL-X-021-25ses_3d53335c4ffem01tAWeHysAqeQ"
+    },
+    {
+      "name": "PROTOCOL-X-023-25",
+      "status": "success",
+      "sessionPath": "<redacted-sessions>/protocol-x-protocol-x-023-25-PROTOCOL-X-023-25ses_3d5331383ffefEZIawr4piaBlF"
+    },
+    {
+      "name": "PROTOCOL-X-025-25",
+      "status": "failed",
+      "error": "Benchmark returned empty session - Daytona sandbox creation may have failed",
+      "errorCategory": "transient"
+    },
+    {
+      "name": "PROTOCOL-X-029-25",
+      "status": "success",
+      "sessionPath": "<redacted-sessions>/protocol-x-protocol-x-029-25-PROTOCOL-X-029-25ses_3d5326751ffeWV3uf2ZeiBVWt4"
+    },
+    {
+      "name": "PROTOCOL-X-031-25",
+      "status": "failed",
+      "error": "Benchmark returned empty session - Daytona sandbox creation may have failed",
+      "errorCategory": "transient"
+    }
+  ],
+  "completed": 3,
+  "failed": 2,
+  "startTime": "2026-02-04T22:36:04.983Z",
+  "endTime": "2026-02-04T22:50:30.229Z",
+  "durationMinutes": 14.4
+}

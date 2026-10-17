@@ -1,0 +1,49 @@
+{
+  "timestamp": "2026-02-04T22:51:28.323Z",
+  "repoUrl": "https://github.com/Yuvanesh-ux/argus-validation-benchmarks",
+  "model": "claude-sonnet-4-20250514",
+  "totalBenchmarks": 6,
+  "completed": 3,
+  "failed": 3,
+  "aggregateMetrics": {
+    "avgAccuracy": 0,
+    "avgPrecision": 0,
+    "avgRecall": 0
+  },
+  "benchmarks": [
+    {
+      "name": "PROTOCOL-X-021-25",
+      "status": "success",
+      "sessionPath": "<redacted-sessions>/protocol-x-protocol-x-021-25-PROTOCOL-X-021-25ses_3d53335c4ffem01tAWeHysAqeQ"
+    },
+    {
+      "name": "PROTOCOL-X-023-25",
+      "status": "success",
+      "sessionPath": "<redacted-sessions>/protocol-x-protocol-x-023-25-PROTOCOL-X-023-25ses_3d5331383ffefEZIawr4piaBlF"
+    },
+    {
+      "name": "PROTOCOL-X-025-25",
+      "status": "failed",
+      "error": "Benchmark returned empty session - Daytona sandbox creation may have failed",
+      "errorCategory": "transient"
+    },
+    {
+      "name": "PROTOCOL-X-029-25",
+      "status": "success",
+      "sessionPath": "<redacted-sessions>/protocol-x-protocol-x-029-25-PROTOCOL-X-029-25ses_3d5326751ffeWV3uf2ZeiBVWt4"
+    },
+    {
+      "name": "PROTOCOL-X-031-25",
+      "status": "failed",
+      "error": "Benchmark returned empty session - Daytona sandbox creation may have failed",
+      "errorCategory": "transient"
+    },
+    {
+      "name": "PROTOCOL-X-040-25",
+      "status": "failed",
+      "error": "Benchmark returned empty session - Daytona sandbox creation may have failed",
+      "errorCategory": "transient"
+    }
+  ],
+  "failedBenchmarks": ["PROTOCOL-X-025-25", "PROTOCOL-X-031-25", "PROTOCOL-X-040-25"]
+}

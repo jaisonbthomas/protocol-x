@@ -1,0 +1,329 @@
+import { useState, useEffect, useRef } from "react";
+import { useKeyboard } from "@opentui/react";
+import { useRoute } from "../../context/route";
+import { useFocus } from "../../context/focus";
+import { sessions } from "../../../core/session";
+import { openSessionReport } from "../../utils/open-report";
+import { Dialog } from "../../context/dialog";
+import { ScrollBoxRenderable } from "@opentui/core";
+import { scrollToIndex } from "../../utils/scroll";
+import { useTheme } from "../../theme";
+import { useSessionsList } from "../../hooks/use-sessions-list";
+
+interface SessionsDisplayProps {
+  onClose: () => void;
+}
+
+export default function SessionsDisplay({ onClose }: SessionsDisplayProps) {
+  const { colors } = useTheme();
+  const { refocusPrompt } = useFocus();
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [statusMessage, setStatusMessage] = useState<string>("");
+
+  const route = useRoute();
+
+  const scroll = useRef<ScrollBoxRenderable>(null);
+
+  const {
+    groupedSessions,
+    visualOrderSessions,
+    loading,
+    setSearchTerm,
+    deleteSession: hookDeleteSession,
+  } = useSessionsList();
+
+  async function openReport(sessionId: string) {
+    const session = await sessions.get(sessionId);
+    const err = openSessionReport(session.rootPath);
+    if (err) {
+      setStatusMessage(err);
+      setTimeout(() => setStatusMessage(""), 2000);
+    }
+  }
+
+  // Clamp selectedIndex when list changes
+  useEffect(() => {
+    if (
+      visualOrderSessions.length > 0 &&
+      selectedIndex >= visualOrderSessions.length
+    ) {
+      setSelectedIndex(visualOrderSessions.length - 1);
+    } else if (visualOrderSessions.length === 0) {
+      setSelectedIndex(0);
+    }
+  }, [visualOrderSessions.length, selectedIndex]);
+
+  async function deleteSession(sessionId: string) {
+    try {
+      await hookDeleteSession(sessionId);
+      setStatusMessage("Session deleted");
+      setTimeout(() => setStatusMessage(""), 2000);
+      // selectedIndex clamping handled by the useEffect above after re-render
+    } catch (error) {
+      console.error("Error deleting session:", error);
+      setStatusMessage("Error deleting session");
+      setTimeout(() => setStatusMessage(""), 2000);
+    }
+  }
+
+  useKeyboard(async (key) => {
+    // Escape - Close sessions display
+    if (key.name === "escape") {
+      refocusPrompt();
+      onClose();
+      return;
+    }
+
+    // Enter - View existing session (respects original mode)
+    if (key.name === "return" && visualOrderSessions.length > 0) {
+      key.preventDefault();
+      const currentSelection = visualOrderSessions[selectedIndex];
+      if (!currentSelection) return;
+      try {
+        await sessions.get(currentSelection.id);
+      } catch {
+        setStatusMessage("Session not found");
+        setTimeout(() => setStatusMessage(""), 2000);
+        return;
+      }
+      const isOperator =
+        currentSelection.config?.mode === "operator" ||
+        (!currentSelection.config?.mode && currentSelection.hasOperatorState);
+      refocusPrompt();
+      onClose();
+      route.navigate({
+        type: "pentest",
+        sessionId: currentSelection.id,
+        openAsOperator: isOperator || undefined,
+      });
+      return;
+    }
+
+    // O - Open session in operator mode
+    if (
+      (key.name === "o" || key.name === "O") &&
+      !key.ctrl &&
+      !key.meta &&
+      visualOrderSessions.length > 0
+    ) {
+      const currentSelection = visualOrderSessions[selectedIndex];
+      if (!currentSelection) return;
+      try {
+        await sessions.get(currentSelection.id);
+      } catch {
+        setStatusMessage("Session not found");
+        setTimeout(() => setStatusMessage(""), 2000);
+        return;
+      }
+      refocusPrompt();
+      onClose();
+      route.navigate({
+        type: "pentest",
+        sessionId: currentSelection.id,
+        openAsOperator: true,
+      });
+      return;
+    }
+
+    // Arrow Up - Previous session
+    if (key.name === "up" && visualOrderSessions.length > 0) {
+      const newIndex =
+        selectedIndex > 0 ? selectedIndex - 1 : visualOrderSessions.length - 1;
+      setSelectedIndex(newIndex);
+      scrollToIndex(scroll.current, newIndex, visualOrderSessions, (s) => s.id);
+      return;
+    }
+
+    // Arrow Down - Next session
+    if (key.name === "down" && visualOrderSessions.length > 0) {
+      const newIndex =
+        selectedIndex < visualOrderSessions.length - 1 ? selectedIndex + 1 : 0;
+      setSelectedIndex(newIndex);
+      scrollToIndex(scroll.current, newIndex, visualOrderSessions, (s) => s.id);
+      return;
+    }
+
+    // R - Open report
+    if (key.name === "r" && visualOrderSessions.length > 0) {
+      const currentSelection = visualOrderSessions[selectedIndex];
+      if (!currentSelection) return;
+      if (!currentSelection.hasReport) {
+        setStatusMessage("No report available");
+        setTimeout(() => setStatusMessage(""), 2000);
+        return;
+      }
+      openReport(currentSelection.id);
+      return;
+    }
+
+    // Ctrl+D - Delete session
+    if (key.ctrl && key.name === "d" && visualOrderSessions.length > 0) {
+      const currentSelection = visualOrderSessions[selectedIndex];
+      if (!currentSelection) return;
+      await deleteSession(currentSelection.id);
+      return;
+    }
+  });
+
+  const handleClose = () => {
+    refocusPrompt();
+    onClose();
+  };
+
+  if (loading) return null;
+
+  return (
+    <Dialog size="large" onClose={handleClose}>
+      <box flexDirection="column" padding={2} gap={2} width="100%">
+        {/* Header */}
+        <box flexDirection="row" justifyContent="space-between" width="100%">
+          <text fg={colors.text}>Sessions</text>
+          <text fg={colors.textMuted}>esc to close</text>
+        </box>
+
+        {/* Search Input */}
+        <box
+          width="100%"
+          border={["left"]}
+          borderColor={colors.primary}
+          backgroundColor="transparent"
+        >
+          <input
+            paddingLeft={1}
+            backgroundColor="transparent"
+            placeholder="Search sessions..."
+            onInput={setSearchTerm}
+            focused
+            cursorColor={colors.textMuted}
+            textColor={colors.text}
+            focusedTextColor={colors.text}
+          />
+        </box>
+
+        {/* Sessions List */}
+        {visualOrderSessions.length === 0 ? (
+          <text fg={colors.textMuted}>No sessions found</text>
+        ) : (
+          <box
+            flexDirection="column"
+            gap={2}
+            flexGrow={1}
+            maxHeight={10}
+            overflow="hidden"
+          >
+            <scrollbox
+              ref={scroll}
+              scrollbarOptions={{ visible: false }}
+              style={{
+                rootOptions: {
+                  maxHeight: 10,
+                  width: "100%",
+                  flexGrow: 1,
+                  flexShrink: 1,
+                  overflow: "hidden",
+                },
+                wrapperOptions: {
+                  overflow: "hidden",
+                },
+                contentOptions: {
+                  gap: 2,
+                  flexDirection: "column",
+                },
+              }}
+            >
+              {groupedSessions.map((group) => (
+                <box key={group.date} flexDirection="column" gap={1}>
+                  {/* Date Header */}
+                  <text fg={colors.primary}>{group.date}</text>
+
+                  {/* Sessions in this date group */}
+                  {group.sessions.map((session) => {
+                    const isSelected = session.index === selectedIndex;
+                    const startTime = new Date(session.time.created);
+                    const timeStr = startTime.toLocaleTimeString("en-US", {
+                      hour: "numeric",
+                      minute: "2-digit",
+                      hour12: true,
+                    });
+                    const mode = session.config?.mode || "auto";
+                    const modeBadge =
+                      mode === "operator" ? "[operator]" : "[auto]";
+                    const statusBadge = session.hasReport ? "✓" : "…";
+                    const findingsText =
+                      session.findingsCount > 0
+                        ? `${session.findingsCount} finding${session.findingsCount > 1 ? "s" : ""}`
+                        : "";
+
+                    return (
+                      <box
+                        id={session.id}
+                        key={session.id}
+                        onMouseDown={() => setSelectedIndex(session.index)}
+                        backgroundColor="transparent"
+                        border={isSelected ? ["left"] : undefined}
+                        borderColor={isSelected ? colors.primary : undefined}
+                        paddingLeft={2}
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        width="100%"
+                      >
+                        <box flexDirection="row" gap={1}>
+                          <text
+                            fg={isSelected ? colors.primary : colors.textMuted}
+                          >
+                            {isSelected ? "●" : " "}
+                          </text>
+                          <text
+                            fg={isSelected ? colors.text : colors.textMuted}
+                          >
+                            {session.name}
+                          </text>
+                          <text
+                            fg={
+                              session.hasReport
+                                ? colors.primary
+                                : colors.textMuted
+                            }
+                          >
+                            {statusBadge}
+                          </text>
+                          <text
+                            fg={
+                              mode === "operator"
+                                ? colors.primary
+                                : colors.textMuted
+                            }
+                          >
+                            {modeBadge}
+                          </text>
+                          {findingsText ? (
+                            <text fg={colors.textMuted}>{findingsText}</text>
+                          ) : null}
+                        </box>
+                        <text fg={colors.textMuted}>{timeStr}</text>
+                      </box>
+                    );
+                  })}
+                </box>
+              ))}
+            </scrollbox>
+          </box>
+        )}
+
+        {/* Actions Footer */}
+        {visualOrderSessions.length > 0 && (
+          <box flexDirection="row" gap={2}>
+            <text fg={colors.textMuted}>
+              <span fg={colors.primary}>[Enter]</span> Open ·{" "}
+              <span fg={colors.primary}>[O]</span> Operator ·{" "}
+              <span fg={colors.primary}>[R]</span> Report ·{" "}
+              <span fg={colors.primary}>[Ctrl+D]</span> Delete
+            </text>
+          </box>
+        )}
+
+        {statusMessage && <text fg={colors.primary}>{statusMessage}</text>}
+      </box>
+    </Dialog>
+  );
+}

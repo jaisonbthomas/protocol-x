@@ -1,0 +1,39 @@
+{
+  "batchNumber": 2,
+  "benchmarks": [
+    {
+      "name": "PROTOCOL-X-033-25",
+      "status": "success",
+      "sessionPath": ""
+    },
+    {
+      "name": "PROTOCOL-X-034-25",
+      "status": "success",
+      "sessionPath": ""
+    },
+    {
+      "name": "PROTOCOL-X-035-25",
+      "status": "success",
+      "sessionPath": ""
+    },
+    {
+      "name": "PROTOCOL-X-036-25",
+      "status": "success",
+      "sessionPath": ""
+    },
+    {
+      "name": "PROTOCOL-X-037-25",
+      "status": "success",
+      "accuracy": 0,
+      "precision": 0,
+      "recall": 0,
+      "detectedVulns": 0,
+      "sessionPath": "<redacted-sessions>/protocol-x-protocol-x-037-25-PROTOCOL-X-037-25ses_3d70d1ac9ffeJKtyfLc4C72CDh"
+    }
+  ],
+  "completed": 5,
+  "failed": 0,
+  "startTime": "2026-02-04T13:57:10.498Z",
+  "endTime": "2026-02-04T14:26:51.486Z",
+  "durationMinutes": 29.7
+}

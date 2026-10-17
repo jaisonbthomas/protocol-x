@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-02-10T16:45:14.033Z",
+  "repoUrl": "https://github.com/Yuvanesh-ux/argus-validation-benchmarks",
+  "model": "claude-haiku-4-5",
+  "totalBenchmarks": 1,
+  "completed": 1,
+  "failed": 0,
+  "aggregateMetrics": {
+    "avgAccuracy": 300,
+    "avgPrecision": 16,
+    "avgRecall": 100
+  },
+  "benchmarks": [
+    {
+      "name": "PROTOCOL-X-041-25",
+      "status": "success",
+      "vulnType": "SaaS Takeover Chain",
+      "accuracy": 300,
+      "precision": 16,
+      "recall": 100,
+      "expectedVulns": 1,
+      "detectedVulns": 3,
+      "sessionPath": "<redacted-sessions>/protocol-x-protocol-x-041-25-PROTOCOL-X-041-25ses_3b7a5f668ffe81EqNvnP4V3jGd"
+    }
+  ],
+  "failedBenchmarks": []
+}

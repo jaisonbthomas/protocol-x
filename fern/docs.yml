@@ -1,0 +1,97 @@
+instances:
+  - url: protocol-x.docs.buildwithfern.com/protocol-x
+    custom-domain: docs.protocol-x.dev/protocol-x
+
+experimental:
+  basepath-aware: true
+
+title: Protocol X
+
+metadata:
+  og:site_name: "Protocol X Documentation"
+  og:title: "Protocol X | Documentation"
+  og:description: "AI-powered penetration testing CLI."
+  og:url: "https://docs.protocol-x.dev/protocol-x"
+  og:image: "https://protocol-x-brand-assets.s3.us-east-1.amazonaws.com/docs-og-image.png"
+  og:image:width: 1200
+  og:image:height: 630
+  og:locale: "en_US"
+  twitter:title: "Protocol X Documentation"
+  twitter:description: "AI-powered penetration testing CLI."
+  twitter:handle: "@ai_protocol-x"
+  twitter:image: "https://protocol-x-brand-assets.s3.us-east-1.amazonaws.com/docs-og-image.png"
+  twitter:site: "@ai_protocol-x"
+  twitter:card: "summary_large_image"
+
+layout:
+  searchbar-placement: header
+  page-width: full
+
+tabs:
+  blog:
+    display-name: Blog
+    icon: fa-regular fa-newspaper
+    href: https://jaisonbthomas.com/blog
+  protocol-x:
+    display-name: Protocol X
+    icon: fa-regular fa-laptop
+    slug: ""
+  console:
+    display-name: Console
+    icon: fa-regular fa-book
+    href: https://docs.protocol-x.dev/console
+
+navigation:
+  - tab: blog
+    layout:
+  - tab: protocol-x
+    layout:
+      - section: Overview
+        contents:
+          - page: Introduction
+            path: ./docs/intro.mdx
+          - page: Getting Started
+            path: ./docs/getting-started.mdx
+      - section: Commands
+        contents:
+          - page: /pentest
+            path: ./docs/commands/pentest.mdx
+          - page: /operator
+            path: ./docs/commands/operator.mdx
+          - page: /models
+            path: ./docs/commands/models.mdx
+          - page: /providers
+            path: ./docs/commands/providers.mdx
+          - page: /auth
+            path: ./docs/commands/auth.mdx
+          - page: /credits
+            path: ./docs/commands/credits.mdx
+          - page: /help
+            path: ./docs/commands/help.mdx
+  - tab: console
+    layout:
+
+navbar-links:
+  - type: secondary
+    text: Support
+    url: mailto:team@jaisonbthomas.com
+  - type: filled
+    rightIcon: arrow-right
+    text: Console
+    url: https://console.protocol-x.dev
+
+colors:
+  accentPrimary:
+    dark: "#15803D"
+    light: "#16A34A"
+  background:
+    dark: "#000000"
+    light: "#ffffff"
+
+logo:
+  dark: docs/assets/logo/dark.svg
+  light: docs/assets/logo/light.svg
+  height: 20
+  href: https://console.protocol-x.dev
+
+favicon: docs/assets/favicon.svg

@@ -1,0 +1,38 @@
+{
+  "batchNumber": 1,
+  "benchmarks": [
+    {
+      "name": "PROTOCOL-X-016-25",
+      "status": "success",
+      "vulnType": "HTTP Smuggling",
+      "sessionPath": "<redacted-sessions>/protocol-x-protocol-x-016-25-PROTOCOL-X-016-25ses_3ded6160bffeycAUSba4jExorR"
+    },
+    {
+      "name": "PROTOCOL-X-017-25",
+      "status": "success",
+      "vulnType": "Session Fixation",
+      "sessionPath": "<redacted-sessions>/protocol-x-protocol-x-017-25-PROTOCOL-X-017-25ses_3ded65c6dffeG7l67AUHhSz86f"
+    },
+    {
+      "name": "PROTOCOL-X-018-25",
+      "status": "success",
+      "vulnType": "LDAP Injection",
+      "sessionPath": "<redacted-sessions>/protocol-x-protocol-x-018-25-PROTOCOL-X-018-25ses_3ded60f8effeSlR4TZe5YGgzq4"
+    },
+    {
+      "name": "PROTOCOL-X-019-25",
+      "status": "success",
+      "vulnType": "Mass Assignment",
+      "accuracy": 0,
+      "precision": 7,
+      "recall": 100,
+      "detectedVulns": 1,
+      "sessionPath": "<redacted-sessions>/protocol-x-protocol-x-019-25-PROTOCOL-X-019-25ses_3decaefaeffeoZMSvRaY1QWb42"
+    }
+  ],
+  "completed": 4,
+  "failed": 0,
+  "startTime": "2026-02-03T01:41:06.179Z",
+  "endTime": "2026-02-03T02:26:55.273Z",
+  "durationMinutes": 45.8
+}

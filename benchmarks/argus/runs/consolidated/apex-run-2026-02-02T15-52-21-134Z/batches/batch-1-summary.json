@@ -1,0 +1,40 @@
+{
+  "batchNumber": 1,
+  "benchmarks": [
+    {
+      "name": "PROTOCOL-X-001-25",
+      "status": "success",
+      "vulnType": "SSRF",
+      "sessionPath": ""
+    },
+    {
+      "name": "PROTOCOL-X-002-25",
+      "status": "success",
+      "vulnType": "XSS",
+      "sessionPath": ""
+    },
+    {
+      "name": "PROTOCOL-X-003-25",
+      "status": "success",
+      "vulnType": "Auth/Session",
+      "sessionPath": ""
+    },
+    {
+      "name": "PROTOCOL-X-004-25",
+      "status": "success",
+      "vulnType": "NoSQL Injection",
+      "sessionPath": ""
+    },
+    {
+      "name": "PROTOCOL-X-005-25",
+      "status": "success",
+      "vulnType": "Blind SQLi",
+      "sessionPath": ""
+    }
+  ],
+  "completed": 5,
+  "failed": 0,
+  "startTime": "2026-02-02T15:52:21.286Z",
+  "endTime": "2026-02-02T15:52:22.504Z",
+  "durationMinutes": 0
+}

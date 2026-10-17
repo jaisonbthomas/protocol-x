@@ -1,0 +1,133 @@
+import { z } from "zod";
+
+// ---------------------------------------------------------------------------
+// Risk score schemas
+// ---------------------------------------------------------------------------
+
+export const RiskScoreBreakdownSchema = z.object({
+  exposure: z
+    .number()
+    .min(0)
+    .max(3)
+    .describe(
+      "Exposure Level (0-3): 3=Public no auth, 2=Standard user login, 1=Privileged/admin access, 0=Private/internal-only",
+    ),
+  dataSensitivity: z
+    .number()
+    .min(0)
+    .max(3)
+    .describe(
+      "Data Sensitivity (0-3): 3=PII/PHI/financial/passwords/tokens, 2=Business operations/configs, 1=Low-value user data, 0=No meaningful data",
+    ),
+  functionCriticality: z
+    .number()
+    .min(0)
+    .max(2)
+    .describe(
+      "Function Criticality (0-2): 2=Auth flows/payments/state-changing mutations, 1=Core product functionality, 0=Non-critical content",
+    ),
+  securityIndicators: z
+    .number()
+    .min(0)
+    .max(2)
+    .describe(
+      "Security Indicators (0-2): 2=Critical vuln patterns (SQLi, command injection, hardcoded secrets), 1=Moderate concerns (missing validation, weak error handling), 0=No obvious issues",
+    ),
+});
+
+export const RiskScoreSchema = z.object({
+  score: z.number().min(0).max(10).describe("Total risk score (0-10)"),
+  explanation: z.string().describe("Justification for the risk score"),
+  breakdown: RiskScoreBreakdownSchema,
+});
+
+export type RiskScore = z.infer<typeof RiskScoreSchema>;
+export type RiskScoreBreakdown = z.infer<typeof RiskScoreBreakdownSchema>;
+
+// ---------------------------------------------------------------------------
+// Endpoint & App schemas
+// ---------------------------------------------------------------------------
+
+export const EndpointSchema = z.object({
+  method: z
+    .string()
+    .describe(
+      "HTTP method (GET, POST, PUT, DELETE, etc.) or 'PAGE' for web pages",
+    ),
+  path: z.string().describe("Route path (e.g. /api/users/:id, /dashboard)"),
+  handler: z
+    .string()
+    .optional()
+    .describe("Handler function or component name, if identifiable"),
+  file: z.string().describe("File where this endpoint is defined"),
+  line: z.number().optional().describe("Line number in the file"),
+  authRequired: z
+    .boolean()
+    .optional()
+    .describe("Whether this endpoint appears to require authentication"),
+  description: z
+    .string()
+    .optional()
+    .describe("Brief description of what this endpoint does"),
+  pentestObjectives: z
+    .array(z.string())
+    .describe(
+      "Specific pentest objectives for this endpoint (e.g. 'Test for IDOR by enumerating user IDs', 'Test for SQL injection in search parameter')",
+    ),
+  riskScore: RiskScoreSchema.optional().describe(
+    "AI-calculated risk score for prioritizing pentest efforts",
+  ),
+});
+
+export type Endpoint = z.infer<typeof EndpointSchema>;
+
+export const AppSchema = z.object({
+  name: z.string().describe("Application or service name"),
+  framework: z
+    .string()
+    .describe(
+      "Framework in use (e.g. Express, Next.js, Django, FastAPI, Rails)",
+    ),
+  description: z.string().describe("Brief description of what this app does"),
+  location: z
+    .string()
+    .describe("Path to the app root relative to the repository root"),
+  pages: z
+    .array(EndpointSchema)
+    .describe("Web pages / views defined in this app"),
+  apiEndpoints: z
+    .array(EndpointSchema)
+    .describe("API endpoints defined in this app"),
+});
+
+export type App = z.infer<typeof AppSchema>;
+
+// ---------------------------------------------------------------------------
+// Top-level result schema
+// ---------------------------------------------------------------------------
+
+export const WhiteboxAttackSurfaceResultSchema = z.object({
+  repoType: z
+    .string()
+    .describe(
+      "Repository structure type (e.g. 'monorepo', 'single-app', 'multi-package')",
+    ),
+  packageManager: z
+    .string()
+    .describe(
+      "Package manager detected (e.g. npm, yarn, pnpm, pip, cargo, go modules)",
+    ),
+  apps: z
+    .array(AppSchema)
+    .describe("All applications discovered in the repository"),
+  summary: z.object({
+    totalApps: z.number(),
+    totalPages: z.number(),
+    totalApiEndpoints: z.number(),
+    totalPentestObjectives: z.number(),
+  }),
+});
+
+export type WhiteboxAttackSurfaceResult = z.infer<
+  typeof WhiteboxAttackSurfaceResultSchema
+>;

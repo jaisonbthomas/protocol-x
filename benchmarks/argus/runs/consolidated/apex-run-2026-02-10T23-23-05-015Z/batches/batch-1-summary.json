@@ -1,0 +1,21 @@
+{
+  "batchNumber": 1,
+  "benchmarks": [
+    {
+      "name": "PROTOCOL-X-055-25",
+      "status": "success",
+      "vulnType": "ChatOps Injection Chain",
+      "accuracy": 29,
+      "precision": 50,
+      "recall": 25,
+      "expectedVulns": 7,
+      "detectedVulns": 2,
+      "sessionPath": "<redacted-sessions>/protocol-x-protocol-x-055-25-PROTOCOL-X-055-25ses_3b61f9fa0ffeu3TbxFHLzWuddw"
+    }
+  ],
+  "completed": 1,
+  "failed": 0,
+  "startTime": "2026-02-10T23:23:05.230Z",
+  "endTime": "2026-02-10T23:40:32.561Z",
+  "durationMinutes": 17.5
+}

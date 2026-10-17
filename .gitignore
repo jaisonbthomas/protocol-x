@@ -1,0 +1,60 @@
+# dependencies (bun install)
+node_modules
+
+tmp
+temp
+
+# lockfiles (using bun, not npm)
+package-lock.json
+yarn.lock
+
+# output
+out
+dist
+*.tgz
+
+# compiled binary
+protocol-x
+
+# generated assets (created at build time)
+src/tui/generated-ascii-art.json
+
+# code coverage
+coverage
+*.lcov
+
+# logs
+logs
+*.log
+# but keep benchmark execution logs
+!benchmarks/**/logs
+!benchmarks/**/*.log
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# caches
+.eslintcache
+.cache
+*.tsbuildinfo
+
+# IntelliJ based IDEs
+.idea
+
+# Finder (MacOS) folder config
+.DS_Store
+
+build
+
+.secrets
+
+.protocol-x
+
+.benchmark-logs
+
+.protocol-x-cache

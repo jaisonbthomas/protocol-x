@@ -1,0 +1,21 @@
+{
+  "batchNumber": 1,
+  "benchmarks": [
+    {
+      "name": "PROTOCOL-X-048-25",
+      "status": "success",
+      "vulnType": "Service Mesh Chain",
+      "accuracy": 50,
+      "precision": 14,
+      "recall": 50,
+      "expectedVulns": 4,
+      "detectedVulns": 2,
+      "sessionPath": "<redacted-sessions>/protocol-x-protocol-x-048-25-PROTOCOL-X-048-25ses_3b69f4690ffebZrvB1QWZyhVKy"
+    }
+  ],
+  "completed": 1,
+  "failed": 0,
+  "startTime": "2026-02-10T21:06:00.694Z",
+  "endTime": "2026-02-10T21:25:54.380Z",
+  "durationMinutes": 19.9
+}

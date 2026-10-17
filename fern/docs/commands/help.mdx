@@ -1,0 +1,167 @@
+---
+title: "/help"
+description: "Display help information and available commands"
+---
+
+## Overview
+
+The `/help` command displays a list of all available commands in Apex along with their descriptions. This is your go-to reference when you need to quickly see what commands are available.
+
+## Usage
+
+```bash
+/help
+```
+
+## What You'll See
+
+When you run `/help`, you'll see a dialog showing:
+
+- **Command List**: All available commands with their names and aliases
+- **Descriptions**: Brief explanation of what each command does
+- **Categories**: Commands grouped by Pentesting, General, and Skills
+
+## Available Commands
+
+### Pentesting
+
+<CardGroup cols={2}>
+  <Card title="/pentest" icon="play">
+    Start an autonomous pentest swarm against your target. Aliases: `/p`,
+    `/web`, `/w`
+  </Card>
+  <Card title="/operator" icon="terminal">
+    Start an interactive operator session with step-by-step control. Alias: `/o`
+  </Card>
+  <Card title="/sessions" icon="clock-rotate-left">
+    Browse and resume previous sessions. Alias: `/s`
+  </Card>
+</CardGroup>
+
+### General
+
+<CardGroup cols={2}>
+  <Card title="/help" icon="circle-question">
+    Display this help information with all available commands
+  </Card>
+  <Card title="/config" icon="gear">
+    Show configuration dialog
+  </Card>
+  <Card title="/models" icon="microchip">
+    View and select AI models from configured providers
+  </Card>
+  <Card title="/providers" icon="plug">
+    Manage AI providers and configure API keys
+  </Card>
+  <Card title="/auth" icon="shield-check" href="/apex/commands/auth">
+    Connect to Pensar Console for managed inference
+  </Card>
+  <Card title="/credits" icon="credit-card" href="/apex/commands/credits">
+    Buy credits or check your balance
+  </Card>
+  <Card title="/themes" icon="palette">
+    Manage application themes. Alias: `/theme`
+  </Card>
+  <Card title="/exit" icon="right-from-bracket">
+    Exit the application. Aliases: `/quit`, `/q`
+  </Card>
+</CardGroup>
+
+### Skills
+
+<CardGroup cols={2}>
+  <Card title="/create-skill" icon="wand-magic-sparkles">
+    Create a new operator skill
+  </Card>
+</CardGroup>
+
+## Command Details
+
+| Command         | Aliases            | Description                                     |
+| --------------- | ------------------ | ----------------------------------------------- |
+| `/pentest`      | `/p`, `/web`, `/w` | Start autonomous pentest swarm                  |
+| `/operator`     | `/o`               | Start interactive operator session              |
+| `/sessions`     | `/s`               | Browse previous sessions                        |
+| `/help`         |                    | Show help dialog                                |
+| `/config`       |                    | Show config dialog                              |
+| `/models`       |                    | Show available AI models                        |
+| `/providers`    |                    | Manage AI providers and API keys                |
+| `/auth`         |                    | Connect to Pensar Console for managed inference |
+| `/credits`      | `/buy`             | Buy credits / check balance                     |
+| `/themes`       | `/theme`           | Manage application themes                       |
+| `/create-skill` |                    | Create a new operator skill                     |
+| `/exit`         | `/quit`, `/q`      | Exit the application                            |
+
+## Getting Started Flow
+
+For new users, here's the recommended order of commands:
+
+<Steps>
+  <Step title="Configure Provider">
+    Run `/providers` to set up your AI provider API key (Anthropic recommended),
+    or `/auth` to connect via Pensar Console
+  </Step>
+  <Step title="Select Model">
+    Run `/models` to choose which AI model to use for testing
+  </Step>
+  <Step title="Start Testing">
+    Run `/pentest` to launch an autonomous pentest, or `/operator` for an
+    interactive session
+  </Step>
+</Steps>
+
+## Keyboard Shortcuts
+
+### Global
+
+| Key      | Action                  |
+| -------- | ----------------------- |
+| `Ctrl+C` | Clear input / Exit      |
+| `Ctrl+K` | Toggle console          |
+| `Ctrl+S` | Show sessions           |
+| `Escape` | Return to home          |
+| `Tab`    | Next item               |
+| `?`      | Show keyboard shortcuts |
+
+### Operator Mode
+
+| Key                | Action                                |
+| ------------------ | ------------------------------------- |
+| `Shift+Tab`        | Toggle Default / Plan mode            |
+| `Option+Shift+Tab` | Toggle approval on/off                |
+| `Ctrl+V`           | Toggle verbose output                 |
+| `Ctrl+L`           | Toggle expanded logs                  |
+| `Y`                | Approve pending tool call             |
+| `A`                | Auto-approve all remaining tool calls |
+
+## Tips
+
+<Callout intent="info">
+  Type `/help` at any time to quickly reference available commands without
+  leaving the Apex interface.
+</Callout>
+
+<Callout intent="success">
+  **Pro Tip**: Press `[ESC]` to close the help dialog and return to the main
+  screen.
+</Callout>
+
+## Related Commands
+
+<CardGroup cols={2}>
+  <Card title="/pentest" icon="play" href="/apex/commands/pentest">
+    Start a penetration test
+  </Card>
+  <Card title="/models" icon="microchip" href="/apex/commands/models">
+    Select AI model
+  </Card>
+  <Card title="/providers" icon="plug" href="/apex/commands/providers">
+    Configure AI providers
+  </Card>
+  <Card title="/auth" icon="shield-check" href="/apex/commands/auth">
+    Connect to Pensar Console
+  </Card>
+  <Card title="/credits" icon="credit-card" href="/apex/commands/credits">
+    Check balance or buy credits
+  </Card>
+</CardGroup>

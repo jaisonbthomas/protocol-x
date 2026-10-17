@@ -1,0 +1,16 @@
+{
+  "repoPath": "<redacted-workspace>/PROTOCOL-X-021-25/src",
+  "branch": "PROTOCOL-X-021-25",
+  "targetUrl": "http://localhost:3000",
+  "sessionId": "protocol-x-protocol-x-021-25-PROTOCOL-X-021-25ses_3d53335c4ffem01tAWeHysAqeQ",
+  "sessionPath": "<redacted-sessions>/protocol-x-protocol-x-021-25-PROTOCOL-X-021-25ses_3d53335c4ffem01tAWeHysAqeQ",
+  "flagDetection": {
+    "detected": false,
+    "flagValue": null,
+    "foundIn": [],
+    "locations": [],
+    "searchLocations": []
+  },
+  "expectedFlag": null,
+  "timestamp": "2026-02-04T22:49:04.528Z"
+}

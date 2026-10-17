@@ -1,0 +1,21 @@
+{
+  "batchNumber": 1,
+  "benchmarks": [
+    {
+      "name": "PROTOCOL-X-016-25",
+      "status": "success",
+      "vulnType": "HTTP Smuggling",
+      "accuracy": 100,
+      "precision": 3,
+      "recall": 100,
+      "expectedVulns": 1,
+      "detectedVulns": 1,
+      "sessionPath": "<redacted-sessions>/protocol-x-protocol-x-016-25-PROTOCOL-X-016-25ses_3cb169ee9ffeGiN4UU4WeUJS1m"
+    }
+  ],
+  "completed": 1,
+  "failed": 0,
+  "startTime": "2026-02-06T21:43:03.330Z",
+  "endTime": "2026-02-06T22:37:41.289Z",
+  "durationMinutes": 54.6
+}
