@@ -33,25 +33,25 @@ See `package.json` `scripts` for the full list.
 
 ### Key directories
 
-- `src/core/agents/` — Agent implementations (auth, attack surface, pentest, offensive security)
-- `src/core/ai/` — AI SDK wrappers and streaming utilities
-- `src/core/api/` — Public API surface for running agents
-- `src/core/auth/` — Centralized Protocol X Console authentication (device flow, tokens, HMAC signing, workspaces)
-- `src/core/credentials/` — Credential management
-- `src/core/findings/` — Vulnerability findings registry
-- `src/core/session/` — Session management
-- `src/cli/` — Headless CLI commands (auth, uninstall)
-- `src/tests/` — Integration tests (many require live services)
-- `src/tui/` — Terminal UI components
+- `src/core/agents/` - Agent implementations (auth, attack surface, pentest, offensive security)
+- `src/core/ai/` - AI SDK wrappers and streaming utilities
+- `src/core/api/` - Public API surface for running agents
+- `src/core/auth/` - Centralized Protocol X Console authentication (device flow, tokens, HMAC signing, workspaces)
+- `src/core/credentials/` - Credential management
+- `src/core/findings/` - Vulnerability findings registry
+- `src/core/session/` - Session management
+- `src/cli/` - Headless CLI commands (auth, uninstall)
+- `src/tests/` - Integration tests (many require live services)
+- `src/tui/` - Terminal UI components
 
 ### CI
 
 The CI pipeline (`.github/workflows/ci.yml`) runs these jobs in parallel on every PR and push to `main`/`canary`:
 
-- **Lint** — ESLint + Prettier
-- **TypeCheck** — `tsc --noEmit`
-- **Test** — `bun run test` (vitest)
-- **Build** — full build + smoke test
+- **Lint** - ESLint + Prettier
+- **TypeCheck** - `tsc --noEmit`
+- **Test** - `bun run test` (vitest)
+- **Build** - full build + smoke test
 
 ### TUI startup flow
 
