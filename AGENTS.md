@@ -29,7 +29,7 @@ See `package.json` `scripts` for the full list.
 - Integration tests (`src/tests/auth.test.ts`, `src/tests/attackSurface.test.ts`, `src/core/api/attackSurface.test.ts`) require an `ANTHROPIC_API_KEY` (or other AI provider key) and make real network calls to external services with 2-minute timeouts. They are currently skipped via `describe.skip` because they depend on a live staging server and LLM API calls.
 - Some auth tests also require `TEST_AUTH_USERNAME` and `TEST_AUTH_PASSWORD` environment variables.
 - Tests use vitest with the `node` environment and a 120-second default timeout (see `vitest.config.ts`).
-- When making code changes, always run `bun run test` — all tests should pass (or be skipped) before committing.
+- When making code changes, always run `bun run test` - all tests should pass (or be skipped) before committing.
 
 ### Key directories
 
