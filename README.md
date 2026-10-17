@@ -2,12 +2,9 @@
 
 <p align="center"><strong>Autonomous AI Agents for Automated Penetration Testing and Vulnerability Assessment</strong></p>
 
-<p align="center">AI-powered penetration testing tool that enables you to use autonomous AI agents to perform comprehensive blackbox and whitebox pentesting — directly in your terminal.
+<p align="center">AI-powered penetration testing tool that enables you to use autonomous AI agents to perform comprehensive blackbox and whitebox pentesting - directly in your terminal.
 </p>
 
-<p align="center">
-  <img src="screenshot.png" alt="Protocol X Screenshot" width="800">
-</p>
 
 ## About
 
