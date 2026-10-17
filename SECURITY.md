@@ -27,8 +27,8 @@ This policy applies to the latest version of the project on the `canary` branch.
 
 The following components are considered security-relevant and fully in scope:
 
-- **Shipped CLI and TUI** — the distributed command-line interface and terminal UI (`build/`, `bin/`)
-- **Published npm package** — artifacts distributed via the `@jaisonbthomas/protocol-x` npm package
+- **Shipped CLI and TUI** - the distributed command-line interface and terminal UI (`build/`, `bin/`)
+- **Published npm package** - artifacts distributed via the `@jaisonbthomas/protocol-x` npm package
 - **Authentication, authorization, and session logic**
 - **Components that process untrusted external input as part of normal product usage**
 
@@ -69,7 +69,7 @@ Issues that require a user to execute internal development scripts against malic
 
 ### AI Model Trust Boundary
 
-Protocol X is an AI-agent system. Internal agent tools (e.g., file operations, command execution) receive their parameters from the AI model at inference time — not from external or untrusted input. The model operates as a delegate of the operator, within the operator's own system permissions.
+Protocol X is an AI-agent system. Internal agent tools (e.g., file operations, command execution) receive their parameters from the AI model at inference time - not from external or untrusted input. The model operates as a delegate of the operator, within the operator's own system permissions.
 
 Model-generated tool parameters (file paths, command strings, etc.) are part of the model's inference output and are governed by the model's system prompt and alignment, not by input-validation controls designed for untrusted external data. The absence of path restrictions or input sanitization on agent tool parameters is a deliberate design choice consistent with the trust model of AI coding and security agents, not an implementation defect.
 
@@ -87,7 +87,7 @@ Operators accept inherent risk when directing the tool at any target during auth
 - Attempts by targets to fingerprint, throttle, or retaliate against scanning infrastructure
 - Prompt injection attempts by hostile targets designed to influence AI model behavior
 
-Compromise scenarios arising from expected interaction with hostile targets — during authorized and intended usage — are considered inherent operational risk of offensive security tooling, not product vulnerabilities. This includes scenarios where a hostile target attempts to influence the AI model's tool-calling behavior via prompt injection payloads embedded in application content.
+Compromise scenarios arising from expected interaction with hostile targets - during authorized and intended usage - are considered inherent operational risk of offensive security tooling, not product vulnerabilities. This includes scenarios where a hostile target attempts to influence the AI model's tool-calling behavior via prompt injection payloads embedded in application content.
 
 Reports must demonstrate a defect in Protocol X's implementation that violates its documented threat model, rather than outcomes that stem from intentionally engaging adversarial systems or from the AI model's inference behavior.
 
@@ -95,10 +95,10 @@ Reports must demonstrate a defect in Protocol X's implementation that violates i
 
 Severity is determined based on:
 
-- **Product exposure** — Is the affected component shipped to users?
-- **Realistic attack surface** — Does the vulnerability arise during normal, intended usage?
-- **Blast radius** — What is the scope of potential impact?
-- **Alignment with intended usage** — Does exploitation require deviating from documented workflows?
+- **Product exposure** - Is the affected component shipped to users?
+- **Realistic attack surface** - Does the vulnerability arise during normal, intended usage?
+- **Blast radius** - What is the scope of potential impact?
+- **Alignment with intended usage** - Does exploitation require deviating from documented workflows?
 
 Local-only code execution within internal developer tooling does not automatically equate to production remote code execution. Severity classifications reflect the actual deployment context and user exposure of affected components.
 
