@@ -71,17 +71,17 @@ export LOCAL_MODEL_URL="http://localhost:8000/v1"
 
 ## Key Features
 
-- 🤖 **Autonomous AI Agents** — Leverages AI to automate penetration testing workflows
-- 🔍 **Reconnaissance** — Automated target discovery, port scanning, and service enumeration
-- 🎯 **Vulnerability Identification** — AI-driven vulnerability detection and classification
-- 🛤️ **Attack-Path Analysis** — Intelligent attack path generation and exploitation
-- 📊 **Security Assessment** — Comprehensive reporting with risk scoring
-- 🖥️ **Terminal UI** — Beautiful, interactive terminal-based user interface
-- 🐳 **Container Support** — Kali Linux container with pre-installed tools
+- **Autonomous AI Agents** — Leverages AI to automate penetration testing workflows
+- **Reconnaissance** — Automated target discovery, port scanning, and service enumeration
+- **Vulnerability Identification** — AI-driven vulnerability detection and classification
+- **Attack-Path Analysis** — Intelligent attack path generation and exploitation
+- **Security Assessment** — Comprehensive reporting with risk scoring
+- **Terminal UI** — Beautiful, interactive terminal-based user interface
+- **Container Support** — Kali Linux container with pre-installed tools
 
 ---
 
-### ⚠️ Responsible Use
+###  Responsible Use
 
 This repository contains tools for **authorized security testing** only.  
 Before use, please read and agree to the [Responsible Use Disclosure](./RESPONSIBLE_USE.md).
