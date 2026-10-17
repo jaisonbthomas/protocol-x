@@ -8,7 +8,7 @@
 
 ## About
 
-This term paper investigates how autonomous AI agents can be used to automate different stages of penetration testing, including **reconnaissance**, **vulnerability identification**, **attack-path analysis**, and **security assessment**. It examines how AI can improve the efficiency and scalability of traditional offensive security testing while also addressing challenges such as accuracy, false positives, authorization, and responsible use.
+This tool investigates how autonomous AI agents can be used to automate different stages of penetration testing, including **reconnaissance**, **vulnerability identification**, **attack-path analysis**, and **security assessment**. It examines how AI can improve the efficiency and scalability of traditional offensive security testing while also addressing challenges such as accuracy, false positives, authorization, and responsible use.
 
 **Author:** Jaison B Thomas
 
