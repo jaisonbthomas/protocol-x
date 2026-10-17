@@ -4,7 +4,7 @@
 
 If you discover a security vulnerability in this project, please report it responsibly. **Do not open a public GitHub issue for security vulnerabilities.**
 
-Email: **security@jaisonbthomas.com**
+Email: **jaison@radweber.com**
 
 Please include:
 
