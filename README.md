@@ -1,4 +1,4 @@
-<h1 align="center">Protocol X</h1>
+<h1 align="center">Protocol X By Jaison B Thomas</h1>
 
 <p align="center"><strong>Autonomous AI Agents for Automated Penetration Testing and Vulnerability Assessment</strong></p>
 
